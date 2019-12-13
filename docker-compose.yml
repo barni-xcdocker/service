@@ -11,6 +11,15 @@ services:
           - ./certs:/etc/nginx/certs
           - /var/run/docker.sock:/tmp/docker.sock:ro
         restart: unless-stopped
+    mailhog:
+        container_name: mailhog
+        build: ./mailhog
+        ports:
+        - "1025:1025"
+        - "8025:8025"
+        environment:
+            - VIRTUAL_HOST=mailhog.local
+        restart: unless-stopped
 volumes:
   x-service-shared:
 networks:
