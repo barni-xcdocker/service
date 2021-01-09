@@ -7,6 +7,7 @@ services:
         ports:
           - "80:80"
           - "443:443"
+          - "8080:8080"
         volumes:
           - ./certs:/etc/nginx/certs
           - /var/run/docker.sock:/tmp/docker.sock:ro
@@ -17,8 +18,6 @@ services:
         ports:
         - "1025:1025"
         - "8025:8025"
-        environment:
-            - VIRTUAL_HOST=mailhog.local
         restart: unless-stopped
 volumes:
   x-service-shared:
